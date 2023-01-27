@@ -1,0 +1,23 @@
+<% include ../views/partials/header %>
+<body style="background: linear-gradient(120deg, #8dc9f1, #e1aef7);">
+<a href="/">Go Back</a>
+<h1><i class="fa fa-user"></i> <%= name %></h1>
+
+<% if (coachs.length > 0) { %>
+    <ul class="list-group">
+        <% coachs.forEach(function(coach) { %>
+            <li class="list-group-item"><strong>Players Of Coach:</strong><h5><a href="/player/<%= coach.id %>"><%= coach.name %></a></h5></li>
+        <% }); %>
+    </ul>
+<% } %>
+
+<% if (nbateams.length > 0) { %>
+    <ul class="list-group">
+        <% nbateams.forEach(function(nbateam) { %>
+            <li class="list-group-item"><strong>NBA Team:</strong><h5><a href="/nbateam/<%= nbateam.id %>"><%= nbateam.name %></a></h5></li>
+        <% }); %>
+    </ul>
+<% } %>
+
+</body>
+<% include ../views/partials/footer %>

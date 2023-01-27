@@ -1,0 +1,189 @@
+<div style="background: linear-gradient(120deg, #8dc9f1, #e1aef7);">
+<% include ../views/partials/header %>
+
+  <a class="btn btn-primary" role="button" data-toggle="collapse" href="#addplayer" aria-expanded="false" aria-controls="addplayer">
+    Add New Player
+  </a>
+
+
+<a class="btn btn-primary" role="button" data-toggle="collapse" href="#addnbateam" aria-expanded="false" aria-controls="addnbateam">
+  Add New Team
+</a>
+<a class="btn btn-primary" role="button" data-toggle="collapse" href="#addcoach" aria-expanded="false" aria-controls="addcoach">
+  Add New COACH
+</a>
+
+<a class="btn btn-primary" role="button" data-toggle="collapse" href="#connectplayercoachteam" aria-expanded="false" aria-controls="connectplayercoachteam">
+  Connect Player Team
+</a>
+
+
+
+<div class="collapse" id="addplayer">
+  <div class="well1">
+  <h3>Add New Player</h3>
+    <form method="POST" action="/player/add">
+        <input type="text" name="name" placeholder="Name">
+        <input type="text" name="age" placeholder="Age">
+        <input type="text" name="number" placeholder="Number">
+        <input type="text" name="height" placeholder="Height">
+        <input type="text" name="weight" placeholder="Weight">
+        <button value="Submit">
+          Submit
+        </button>
+        <!-- <input type="submit" value="Submit" class="btn btn-default btn-sm"> -->
+    </form>
+   </div>
+</div>
+
+<div class="collapse" id="addcoach">
+  <div class="well1">
+  <h3>Add New Coach</h3>
+    <form method="POST" action="/coach/add">
+        <input type="text" name="name" placeholder="Name">
+        <input type="text" name="age" placeholder="Age">
+        <button value="Submit">
+          Submit
+        </button>
+        <!-- <input type="submit" value="Submit" class="btn btn-default btn-sm"> -->
+    </form>
+   </div>
+</div>
+
+
+<div class="collapse" id="addnbateam">
+  <div class="well1">
+  <h3>Add New Team</h3>
+    <form method="POST" action="/nbateam/add">
+        <input type="text" name="name" placeholder="Name">
+        <button value="Submit">
+          Submit
+        </button>
+        <!-- <input type="submit" value="Submit" class="btn btn-default btn-sm"> -->
+    </form>
+   </div>
+</div>
+
+
+<div class="collapse" id="connectplayercoachteam" >
+  <div class="well1">
+ <h3>Connect Player Team</h3>
+    <form method="POST" action="/nbateam/connect">
+        <input type="text" name="name" placeholder="Name">
+        <input type="text" name="team" placeholder="Team">
+        <input type="text" name="coach" placeholder="Coach">
+        <button value="Submit">
+          Submit
+        </button>
+        <!-- <input type="submit" value="Submit" class="btn btn-default btn-sm"> -->
+    </form>
+   </div>
+</div>
+<style class="bn">
+  input[type=text]{
+    width:100%;
+    border:2px solid #aaa;
+    border-radius:4px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+  }
+  
+  input[type=text]:focus{
+    border-color:rgb(30, 38, 46);
+    box-shadow:0 0 8px 0 dodgerBlue;
+  }
+
+  button {
+  padding: 10px 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: 0px;
+  background: #000000;
+  position: relative;
+  transition: all .2s;
+  overflow: hidden;
+  color: rgb(255, 255, 255);
+  border-radius: 30px;
+  box-shadow: 0px -0px 0px 0px rgba(143, 64, 248, .5), 0px 0px 0px 0px rgba(39, 200, 255, .5);
+}
+
+  button::after {
+    content: '';
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: -50px;
+    left: -100px;
+    background-image: linear-gradient(225deg, #27d86c 0%, #26caf8 50%, #c625d0 100%);
+    z-index: -1;
+    transition: all .5s;
+  }
+  button:hover::after {
+  transform: rotate(150deg);
+}
+
+button:hover {
+  transform: translate(0,-6px);
+  box-shadow: 10px -10px 25px 0px rgba(143, 64, 248, .25), -10px 10px 25px 0px rgba(39, 200, 255, .25);
+}
+.row{
+  display : 100%;
+  flex-direction : row ;
+  padding-top: 10px;
+  margin-left: 10px;
+  justify-content : space-around;
+  flex-flow : wrap;
+}
+#e{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.well{
+  position: relative;  
+  flex: 1;
+  max-width: 200px;
+  height: 75px;
+  margin: 10px;
+  border-radius: 5px;
+}
+.well1{
+  
+}
+
+</style>
+
+<h3>Players</h3>
+<div class="row">
+<% players.forEach(function(player){ %>
+    <div class="col-md-2">
+    <div class="well"> <a href="/player/<%= player.id %>"><div id="e"><i class="fa-basketball-ball"></i>   <%= player.name %></div></a></div>
+    </div>
+<% }) %>
+</div>
+
+
+
+
+<h3>Coaches</h3>
+<div class="row">
+<% coachs.forEach(function(coach){ %>
+    <div class="col-md-2">
+      <div class="well"> <a href="/coach/<%= coach.id %>"><div id="e"><i class="fa fa-user"></i>   <%= coach.name %></div></a></div>
+    </div>
+<% }) %>
+</div>
+
+<h3>NBATeams</h3>
+<div class="row">
+<% nbateams.forEach(function(nbateam){ %>
+    <div class="col-md-2">
+      <div class="well"> <a href="/nbateam/<%= nbateam.id %>"><div id="e"><i class="fa fa-user"></i>   <%= nbateam.name %></div></a></div>
+   </div>
+<% }) %>
+
+<% include ../views/partials/footer %>
+</div>
