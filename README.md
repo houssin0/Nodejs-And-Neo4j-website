@@ -1,4 +1,4 @@
-# Web-App-With-Nodejs-And-Neo4a
+# Web-App-With-Nodejs-And-Neo4j
 This report presents an analysis of player, coach, and team data stored in a graph database using Neo4j to manipulate the data and obtain specific information about players, coaches, and teams. We will also use the relationships between different nodes to explore the data more in-depth and discover relevant insights. The combination of Neo4j's power allows us to easily visualize the data and get answers to complex questions about players, coaches, and teams.
 
 We will use queries to retrieve information about players, coaches, and teams, such as names, physical characteristics, and performances. We will also use queries to explore the relationships between different nodes, such as the relationships between players and the teams they belong to, or between coaches and the teams they coach.
